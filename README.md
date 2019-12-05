@@ -1,2 +1,1 @@
 # AoC19
-AdventOfCode
