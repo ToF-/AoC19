@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: e78e5245554e5bb37026dd8148398c4bad877dda8e6fb62b64c3298b0c98316e
+-- hash: 021dbbbd7b8f6d7f0f2e2ad46e850695f45124a8c44a4c309047335ff997959e
 
 name:           AoC19
 version:        0.1.0.0
@@ -27,6 +27,7 @@ source-repository head
 
 library
   exposed-modules:
+      Day01A
       Lib
   other-modules:
       Paths_AoC19
@@ -52,6 +53,7 @@ test-suite AoC19-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Day01ASpec
       Paths_AoC19
   hs-source-dirs:
       test
@@ -59,4 +61,5 @@ test-suite AoC19-test
   build-depends:
       AoC19
     , base >=4.7 && <5
+    , hspec
   default-language: Haskell2010
