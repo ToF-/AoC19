@@ -1,8 +1,10 @@
-import Day01B
+import Day02A
 
 main = do
     contents <-  getContents
-    let modules = map read (lines contents)
-        totalFuel = sum $ map requiredFuelComplete modules
-    putStrLn (show totalFuel)
+    putStrLn contents
+    let code = read ("["++contents++"]")
+        patch = head code : 12 : 2 : drop 3 code
+        result = run patch
+    putStrLn (show (result!!0))
     
