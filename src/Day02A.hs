@@ -13,10 +13,13 @@ run = toList . toAscList . runAt 0 . fromList
 
 type Program = [Int]
 
+at :: Program -> Int -> Int
+prog `at` i = prog!!i
+
 runAt i prog | prog!!i == 99 = prog
 runAt i prog = 
     let
-    op = case prog!!i of
+    op = case prog `at` i of
            1 -> (+)
            2 -> (*)
     x  = prog!!(prog!!(i+1))
