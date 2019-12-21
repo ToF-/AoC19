@@ -1,7 +1,7 @@
 module Day02A where
 
 run [99] = [99]
-run prog@[1,i,j,7,99,a,b,0] = prefix ++ result
+run prog@(1:i:j:7:99:rem) = prefix ++ result
     where
     sizeS  = length prog - (sizeP + 1)
     sizeP  = 5
