@@ -1,21 +1,25 @@
 module Day02A where
+import Data.Map as M
 
 run :: [Int] -> [Int]
-run = toList . toAscList . runAt 0 . fromList
+run = toList . M.toAscList . runAt 0 . M.fromList . zip [0..]
     where
-    fromList = id
-    toAscList = zip [0..] 
+    toList :: [(Int,Int)] -> [Int]
     toList = toListFrom 0
+    toListFrom :: Int -> [(Int,Int)] -> [Int]
     toListFrom n [] = []
     toListFrom n ((m,x):xs) | m == n = x : toListFrom (succ n) xs
     toListFrom n ((m,x):xs) | m > n = 0 : toListFrom (succ n) ((m,x):xs) 
 
 
-type Program = [Int]
+type Program = Map Int Int
 
 at :: Program -> Int -> Int
-prog `at` i = prog!!i
+prog `at` i = case M.lookup i prog of
+                Just n -> n
+                Nothing -> 0
 
+runAt :: Int -> Program -> Program
 runAt i prog | prog `at` i == 99 = prog
 runAt i prog = 
     let
@@ -28,8 +32,6 @@ runAt i prog =
     r  = x `op` y 
      in runAt (i+4) (replace d r prog)
 
-replace 0 n (_:xs) = n : xs
-replace 0 n []  = [n]
-replace i n []  = 0 : replace (pred i) n []
-replace i n (x:xs) = x : replace (pred i) n xs
+replace :: Int -> Int -> Program -> Program
+replace i n program = M.insert i n program
 
