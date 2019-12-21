@@ -22,9 +22,9 @@ runAt i prog =
     op = case prog `at` i of
            1 -> (+)
            2 -> (*)
-    x  = prog!!(prog!!(i+1))
-    y  = prog!!(prog!!(i+2))
-    d  = prog!!(i+3)
+    x  = prog `at` (prog `at` (i+1))
+    y  = prog `at` (prog `at` (i+2))
+    d  = prog `at` (i+3)
     r  = x `op` y 
      in runAt (i+4) (replace d r prog)
 
