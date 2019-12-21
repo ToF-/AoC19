@@ -1,8 +1,17 @@
 module Day02A where
-import Data.Map as M
 
 run :: [Int] -> [Int]
-run = runAt 0
+run = toList . toAscList . runAt 0 . fromList
+    where
+    fromList = id
+    toAscList = zip [0..] 
+    toList = toListFrom 0
+    toListFrom n [] = []
+    toListFrom n ((m,x):xs) | m == n = x : toListFrom (succ n) xs
+    toListFrom n ((m,x):xs) | m > n = 0 : toListFrom (succ n) ((m,x):xs) 
+
+
+type Program = [Int]
 
 runAt i prog | prog!!i == 99 = prog
 runAt i prog = 
