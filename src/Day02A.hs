@@ -2,7 +2,6 @@ module Day02A where
 
 run = runAt 0
 
-runAt 0 [1,9,10,3 ,2,3,11,0 ,99 ,30,40,50] = [3500,9,10,70 ,2,3,11,0 ,99 ,30,40,50]
 runAt i prog | prog!!i == 99 = prog
 runAt i prog = 
     let
