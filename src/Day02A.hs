@@ -1,5 +1,7 @@
 module Day02A where
+import Data.Map as M
 
+run :: [Int] -> [Int]
 run = runAt 0
 
 runAt i prog | prog!!i == 99 = prog
