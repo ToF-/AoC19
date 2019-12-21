@@ -36,3 +36,10 @@ spec = describe "Intcode program" $ do
         run [2,3,0,3,99] `shouldBe` [2,3,0,6,99]
         run [2,4,4,5,99,0] `shouldBe` [2,4,4,5,99,9801] 
         run [1,1,1,4,99,5,6,0,99] `shouldBe` [30,1,1,4,2,5,6,0,99]
+
+    it "run the program given in the puzzle" $ do
+        handle <- openFile "input/Day2A.txt" ReadMode
+        contents <- hGetContents handle
+        let program = read $ ("[" ++ contents ++ "]")
+        let program' = take 1 program ++ [12,2] ++ drop 3 program
+        (run program')!!0  `shouldBe` 6568671
