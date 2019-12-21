@@ -32,3 +32,4 @@ spec = describe "Intcode program" $ do
                         ,99
                         ,30,40,50]
 
+        run [1,0,0,0,99] `shouldBe` [2,0,0,0,99]
