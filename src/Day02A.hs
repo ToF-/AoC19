@@ -16,7 +16,7 @@ type Program = [Int]
 at :: Program -> Int -> Int
 prog `at` i = prog!!i
 
-runAt i prog | prog!!i == 99 = prog
+runAt i prog | prog `at` i == 99 = prog
 runAt i prog = 
     let
     op = case prog `at` i of
