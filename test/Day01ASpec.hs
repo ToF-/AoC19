@@ -8,3 +8,6 @@ spec = describe "fuelRequirement" $ do
         fuelRequirement 14 `shouldBe` 2
         fuelRequirement 1969 `shouldBe` 654
 
+    it "compute the total fuel requirement of a list of modules" $ do
+        sumFuelRequirements [14,1969] `shouldBe` 2+654
+
