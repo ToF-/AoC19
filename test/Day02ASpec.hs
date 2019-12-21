@@ -16,3 +16,7 @@ spec = describe "Intcode program" $ do
     it "do an addition on address beyond size of  initial program" $ do
         run [1,5,6,10,99,42,17] `shouldBe` [1,5,6,10,99,42,17,0,0,0,59]
 
+    it "do an addition on address before current position in the program" $ do
+        run [1,5,6,0,99,42,17] `shouldBe` [59,5,6,0,99,42,17]
+
+
