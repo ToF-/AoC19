@@ -14,3 +14,4 @@ spec = describe "fuelRequirement" $ do
         contents <- hGetContents handle
         let modules = map read $ lines contents
         sumFuelRequirements modules  `shouldBe` 5069241
+    -- done
