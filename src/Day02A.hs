@@ -13,9 +13,7 @@ runAt i prog =
     y  = prog!!(prog!!(i+2))
     d  = prog!!(i+3)
     r  = x `op` y 
-     in replace d r prog
-
-
+     in runAt (i+4) (replace d r prog)
 
 replace 0 n (_:xs) = n : xs
 replace 0 n []  = [n]
