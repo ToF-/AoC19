@@ -3,7 +3,7 @@ module Day02A where
 run [99] = [99]
 run prog@[1,5,6,7,99,a,b,0] = prefix ++ suffix 
     where
-    sizeS  = 2
+    sizeS  = length prog - (sizeP + 1)
     sizeP  = 5
     prefix = take sizeP prog 
     suffix = replace sizeS (a+b) [a,b,0]
