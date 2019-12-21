@@ -3,7 +3,7 @@ module Day02A where
 run = runAt 0
 
 runAt 0 [1,9,10,3 ,2,3,11,0 ,99 ,30,40,50] = [3500,9,10,70 ,2,3,11,0 ,99 ,30,40,50]
-runAt 0 prog@(99:_) = prog
+runAt 0 prog | prog!!0 == 99 = prog
 runAt 0 prog@(1:i:j:k:rem) = replace k (prog!!i+prog!!j) prog
 runAt 0 prog@(2:i:j:k:rem) = replace k (prog!!i*prog!!j) prog
 
