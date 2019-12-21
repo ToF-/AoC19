@@ -10,5 +10,5 @@ spec = describe "Intcode program" $ do
 
     it "do an addition on indirect addresses" $ do
         run [1,5,6,7,99,42,17,0] `shouldBe` [1,5,6,7,99,42,17,42+17]
-        run [1,5,6,7,99,4807,23,0] `shouldBe` [1,5,6,7,99,42,17,4807+23]
+        run [1,5,6,7,99,4807,23,0] `shouldBe` [1,5,6,7,99,4807,23,4807+23]
 
