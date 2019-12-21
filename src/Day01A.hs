@@ -1,5 +1,4 @@
 module Day01A where
 
-fuelRequirement 14 = 2
-fuelRequirement 1969 = 654
+fuelRequirement mass = mass `div` 3 - 2
 
