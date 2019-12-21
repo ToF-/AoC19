@@ -6,7 +6,8 @@ run prog@[1,5,6,7,99,a,b,0] = prefix ++ result
     sizeS  = length prog - (sizeP + 1)
     sizeP  = 5
     prefix = take sizeP prog 
-    result = replace sizeS (a+b) [a,b,0]
+    suffix = drop sizeP prog
+    result = replace sizeS (a+b) suffix
 run [1,6,7,8,99,0,a,b,0] = [1,6,7,8,99,0,a] ++ replace 1 (a+b) [b,0]
 
 replace 0 n [0] = [n]
