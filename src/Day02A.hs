@@ -16,8 +16,6 @@ runAt i prog =
      in replace d r prog
 
 
-runAt i prog | prog!!i == 1 = replace (prog!!(i+3)) (prog!!(prog!!(i+1))+prog!!(prog!!(i+2))) prog
-runAt 0 prog | prog!!0 == 2 = replace (prog!!3) (prog!!(prog!!1)*prog!!(prog!!2)) prog
 
 replace 0 n (_:xs) = n : xs
 replace 0 n []  = [n]
