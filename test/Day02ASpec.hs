@@ -43,3 +43,4 @@ spec = describe "Intcode program" $ do
         let program = read $ ("[" ++ contents ++ "]")
         let program' = take 1 program ++ [12,2] ++ drop 3 program
         (run program')!!0  `shouldBe` 6568671
+    -- done
