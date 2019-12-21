@@ -12,7 +12,7 @@ spec = describe "fuelRequirement" $ do
     it "compute the total fuel requirement of a list of modules" $ do
         sumFuelRequirements [14,1969] `shouldBe` 2+654
 
-    it "compute the total fuel requirements for the puzzel" $ do
+    it "compute the total fuel requirements for the puzzle" $ do
         handle <- openFile "input/Day1A.txt" ReadMode
         contents <- hGetContents handle
         let modules = map read $ lines contents
