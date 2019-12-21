@@ -1,7 +1,7 @@
 module Day02A where
 
-run [99] = [99]
-run prog@(1:i:j:k:99:rem) = replace k (prog!!i+prog!!j) prog
+run prog@(99:_) = prog
+run prog@(1:i:j:k:rem) = replace k (prog!!i+prog!!j) prog
 
 replace 0 n [0] = [n]
 replace 0 n []  = [n]
