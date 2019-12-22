@@ -7,5 +7,5 @@ data Direction = L Int | R Int | U Int | D Int
     deriving (Eq,Show)
 
 extend :: Position -> Direction -> Segment
-extend (x,y) (R 75) = ((x,y),(x+75,y))
+extend (x,y) (R l) = ((x,y),(x+l,y))
 
