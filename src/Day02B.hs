@@ -14,3 +14,5 @@ findNounVerb = head
 
 result = head
 setup n v prog = head prog : n : v : drop 3 prog
+
+runWith noun verb prog = result (run (setup noun verb prog))
