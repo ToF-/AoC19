@@ -29,3 +29,4 @@ spec = describe "manhattan distance of closest intersection" $ do
 
         it "a vertical interset with horitontal depending on x and y" $ do
             V 15 0 10 `intersect` H (-4) 3 7 `shouldBe` []
+            V 15 0 10 `intersect` H 4 3 20 `shouldBe` [(15,4)]
