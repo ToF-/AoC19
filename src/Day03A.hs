@@ -12,3 +12,4 @@ data Direction = L Int | R Int | U Int | D Int
 
 extend :: Position -> Direction -> Segment
 extend (x,y) (R l) = H y x (x+l)
+extend (x,y) (L l) = H y (x-l) x
