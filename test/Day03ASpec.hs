@@ -12,6 +12,10 @@ spec = describe "manhattan distance of closest intersection" $ do
             (320,100) `extend` U 17 `shouldBe` ((320,100),(320,83))
             (320,100) `extend` D 17 `shouldBe` ((320,100),(320,117))
 
+        it "segment A crosses segment B if Ax0 == Bx0 and Ay0 is within [By0..By1]" $ do
+            ((0,0),(0,10)) `cross` ((0,30),(0,40))  `shouldBe` Nothing
+
+
     describe "list of directions" $ do
         it "create a list of segments" $ do
             segments [R 75,D 30,L 12] 

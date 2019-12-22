@@ -21,3 +21,5 @@ segments = segmentAt (0,0)
         segment = (p `extend` d)
         dest = snd
 
+cross :: Segment -> Segment -> Maybe Position
+cross _ _ = Nothing
