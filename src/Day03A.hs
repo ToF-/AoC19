@@ -23,3 +23,5 @@ intersect (H y x0A x1A) (H _ x0B x1B) = [(x,y) | x <- [x0A..x1A], x >= x0B && x 
 intersect (V xA 0 10) (V xB 3 12) | xA /= xB = []
 intersect (V x y0A y1A) (V _ y0B y1B) | y0B < y0A = intersect (V x y0B y1B) (V x y0A y1A)
 intersect (V x y0A y1A) (V _ y0B y1B) = [(x,y) | y <- [y0A..y1A], y >= y0B && y <= y1B]
+intersect (V 15 0 10) (H (-4) 3 7) = []
+
