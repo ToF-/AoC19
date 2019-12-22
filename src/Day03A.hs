@@ -20,3 +20,4 @@ intersect :: Segment -> Segment -> [Position]
 intersect (H yA 0 10) (H yB 3 12) | yA /= yB = []
 intersect (H y x0A x1A) (H _ x0B x1B) | x0B < x0A = intersect (H y x0B x1B) (H y x0A x1A)
 intersect (H y x0A x1A) (H _ x0B x1B) = [(x,y) | x <- [x0A..x1A], x >= x0B && x <= x1B]
+intersect (V xA 0 10) (V xB 3 12) | xA /= xB = []

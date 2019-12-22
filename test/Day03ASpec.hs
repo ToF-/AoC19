@@ -18,3 +18,6 @@ spec = describe "manhattan distance of closest intersection" $ do
             H 0 0 10 `intersect` H 0 (-4) 4  `shouldBe` [(0,0),(1,0),(2,0),(3,0),(4,0)] 
             H 3 2 8 `intersect` H 3 4 6  `shouldBe` [(4,3),(5,3),(6,3)]
             H 7 2 8 `intersect` H 7 (-40) (-20) `shouldBe` []
+
+        it "two vertical lines on different x don't intersect" $ do
+            V 0 0 10 `intersect` V 1 3 12 `shouldBe` []
