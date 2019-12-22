@@ -17,3 +17,4 @@ spec = describe "findNounVerb" $ do
 
     it "can find the parameters that result into 19690720" $ do
         findParametersFor 19690720 program `shouldBe` 3951 
+    -- done
