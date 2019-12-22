@@ -25,3 +25,4 @@ intersect (V x y0A y1A) (V _ y0B y1B) | y0B < y0A = intersect (V x y0B y1B) (V x
 intersect (V x y0A y1A) (V _ y0B y1B) = [(x,y) | y <- [y0A..y1A], y >= y0B && y <= y1B]
 intersect (V x y0 y1) (H y x0 x1) | x0 <= x && x <= x1 && y0 <= y && y <= y1 = [(x,y)]
                                   | otherwise = []
+intersect (H y x0 x1) (V x y0 y1) = intersect (V x y0 y1) (H y x0 x1) 
