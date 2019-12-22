@@ -8,4 +8,5 @@ spec = describe "manhattan distance of closest intersection" $ do
         it "is created from a position, a direction and a length" $ do
             (0,0) `extend` R 75 `shouldBe` ((0,0),(75,0))
             (10,0) `extend` R 25 `shouldBe` ((10,0),(35,0))
+            (10,0) `extend` L 25 `shouldBe` ((10,0),(-15,0))
 
