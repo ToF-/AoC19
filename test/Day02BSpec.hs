@@ -12,4 +12,5 @@ spec = describe "findNounVerb" $ do
         result [42,15,34]  `shouldBe` 42
 
     it "can run with parameters and give a result" $ do
-        runWith  5 6 [1,0,0,0,99,42,17,23] `shouldBe` 59
+        runWith  5 6 [1,0,0,0,99,42,17,23] `shouldBe` 42+17
+        runWith  6 7 [1,0,0,0,99,42,17,23] `shouldBe` 17+23
