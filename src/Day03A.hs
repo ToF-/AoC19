@@ -17,5 +17,5 @@ extend (x,y) (U l) = V x y (y+l)
 extend (x,y) (D l) = V x (y-l) y
 
 intersect :: Segment -> Segment -> [Position]
-intersect (H 0 0 10) (H 1 3 12) = []
+intersect (H yA 0 10) (H yB 3 12) | yA /= yB = []
 intersect (H 0 0 10) (H 0 (-4) 4) = [(0,0),(1,0),(2,0),(3,0),(4,0)] 
