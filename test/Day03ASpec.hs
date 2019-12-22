@@ -13,3 +13,6 @@ spec = describe "manhattan distance of closest intersection" $ do
 
         it "two horizontal lines on different y don't intersect" $ do
             H 0 0 10 `intersect` H 1 3 12 `shouldBe` []
+
+        it "two horizontal lines on same y intersect if their coords are within range" $ do
+            H 0 0 10 `intersect` H 0 (-4) 4  `shouldBe` [(0,0),(1,0),(2,0),(3,0),(4,0)] 
