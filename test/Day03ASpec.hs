@@ -21,3 +21,8 @@ spec = describe "manhattan distance of closest intersection" $ do
 
         it "two vertical lines on different x don't intersect" $ do
             V 0 0 10 `intersect` V 1 3 12 `shouldBe` []
+
+        it "two vertical lines on same x intersect if their coords are within range" $ do
+            V 0 0 10 `intersect` V 0 (-4) 4  `shouldBe` [(0,0),(0,1),(0,2),(0,3),(0,4)] 
+            V 3 2 8 `intersect` V 3 4 6  `shouldBe` [(3,4),(3,5),(3,6)]
+            V 7 2 8 `intersect` V 7 (-40) (-20) `shouldBe` []
