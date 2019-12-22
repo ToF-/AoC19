@@ -12,3 +12,10 @@ spec = describe "manhattan distance of closest intersection" $ do
             (320,100) `extend` U 17 `shouldBe` ((320,100),(320,83))
             (320,100) `extend` D 17 `shouldBe` ((320,100),(320,117))
 
+    describe "list of directions" $ do
+        it "create a list of segments" $ do
+            segments [R 75,D 30,L 12] 
+                `shouldBe` [((0,0),(75,0))
+                           ,((75,0),(75,30))
+                           ,((75,30),(63,30))]
+
