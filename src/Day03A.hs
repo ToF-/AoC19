@@ -10,4 +10,5 @@ extend :: Position -> Direction -> Segment
 extend (x,y) (R l) = ((x,y),(x+l,y))
 extend (x,y) (L l) = ((x,y),(x-l,y))
 extend (x,y) (U l) = ((x,y),(x,y-l))
+extend (x,y) (D l) = ((x,y),(x,y+l))
 
