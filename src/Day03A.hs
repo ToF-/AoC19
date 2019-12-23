@@ -18,6 +18,9 @@ extend (x,y) (D l) = V x (y-l) y
 
 intersect :: Segment -> Segment -> [Position]
 intersect (H yA x0A x1A) s | x0A>x1A = intersect (H yA x1A x0A) s
+intersect (V xA y0A y1A) s | y0A>y1A = intersect (V xA y1A y0A) s
+intersect s (H yB x0B x1B) | x0B>x1B = intersect s (H yB x1B x0B) 
+intersect s (V xB y0B y1B) | y0B>y1B = intersect s (V xB y1B y0B) 
 intersect (H yA 0 10) (H yB 3 12) | yA /= yB = []
 intersect (H y x0A x1A) (H _ x0B x1B) | x0B < x0A = intersect (H y x0B x1B) (H y x0A x1A)
 intersect (H y x0A x1A) (H _ x0B x1B) = [(x,y) | x <- [x0A..x1A], x >= x0B && x <= x1B]
