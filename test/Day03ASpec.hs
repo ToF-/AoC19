@@ -53,4 +53,5 @@ spec = describe "manhattan distance of closest intersection" $ do
     describe "manhattan distance" $ do
         it "is the sum of the absolute x distance and y distance" $ do
             distance (0,0) (5,5) `shouldBe` 10
+            distance (4,3) (1,1) `shouldBe` 5
 
