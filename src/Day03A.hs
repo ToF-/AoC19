@@ -26,3 +26,6 @@ intersect (V x y0A y1A) (V _ y0B y1B) = [(x,y) | y <- [y0A..y1A], y >= y0B && y 
 intersect (V x y0 y1) (H y x0 x1) | x0 <= x && x <= x1 && y0 <= y && y <= y1 = [(x,y)]
                                   | otherwise = []
 intersect (H y x0 x1) (V x y0 y1) = intersect (V x y0 y1) (H y x0 x1) 
+
+path :: Position -> [Direction] -> [Segment]
+path (0,0) [R 8, U 5, L 5, D 3] = [H 0 0 8, V 8 0 5, H 5 3 8, V 3 2 5]

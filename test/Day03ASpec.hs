@@ -31,3 +31,8 @@ spec = describe "manhattan distance of closest intersection" $ do
             V 15 0 10 `intersect` H (-4) 3 7 `shouldBe` []
             V 15 0 10 `intersect` H 4 3 20 `shouldBe` [(15,4)]
             H 5 0 10 `intersect` V 4 3 20 `shouldBe` [(4,5)]
+
+    describe "path" $ do
+        it "is created from a position and a set of directions and lengths" $ do
+            path (0,0) [R 8, U 5, L 5, D 3] `shouldBe` 
+                [H 0 0 8, V 8 0 5, H 5 3 8, V 3 2 5]
