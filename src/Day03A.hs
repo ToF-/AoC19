@@ -32,7 +32,9 @@ intersect (V x y0 y1) (H y x0 x1) | x0 <= x && x <= x1 && y0 <= y && y <= y1 = [
 intersect (H y x0 x1) (V x y0 y1) = intersect (V x y0 y1) (H y x0 x1) 
 
 path :: Position -> [Direction] -> [Segment]
-path (0,0) (R 8 : [U 5, L 5, D 3]) = segment :  [V 8 0 5, H 5 8 3, V 3 5 2]
+path _ [] = []
+path pos (d:ds) = segment : path (newPosition segment) ds
     where
-    segment = extend (0,0) (R 8)
-path (10,20) [R 8, U 5, L 5, D 3] = H 20 10 18 : [V 18 20 25, H 25 18 13, V 13 25 22]
+    segment = extend pos d 
+    newPosition (H y x0 x1) = (x1,y)
+    newPosition (V x y0 y1) = (x,y1) 
