@@ -42,4 +42,4 @@ path pos (d:ds) = segment : path (newPosition segment) ds
     newPosition (V x y0 y1) = (x,y1) 
 
 cross :: Path -> Path -> [Position]
-cross _ _ = []
+cross [s] [t] = s `intersect` t

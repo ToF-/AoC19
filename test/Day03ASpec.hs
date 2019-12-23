@@ -43,3 +43,4 @@ spec = describe "manhattan distance of closest intersection" $ do
 
         it "can cross another path" $ do
             path (0,0) [R 8] `cross` path (5,5) [L 3]  `shouldBe` []
+            path (0,0) [R 8] `cross` path (5,5) [D 13]  `shouldBe` [(5,0)]
