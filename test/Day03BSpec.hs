@@ -11,3 +11,4 @@ spec = describe "steps"  $ do
         steps (0,0) (3,0) [R 10] `shouldBe` Just 3
         steps (0,0) (5,0) [R 10] `shouldBe` Just 5
         steps (3,0) (5,0) [R 10] `shouldBe` Just 2
+        steps (0,0) (15,0) [R 10] `shouldBe` Nothing
