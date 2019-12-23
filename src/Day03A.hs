@@ -11,7 +11,7 @@ data Segment = H Int Int Int
 type Path = [Segment]
 
 data Direction = L Int | R Int | U Int | D Int 
-    deriving (Eq,Show)
+    deriving (Eq,Show, Read)
 
 extend :: Position -> Direction -> Segment
 extend (x,y) (R l) = H y x (x+l)
@@ -52,3 +52,6 @@ distanceFrom :: Position -> Path -> Path -> Maybe Int
 distanceFrom pos p q = case filter (>0) (map (distance pos) (cross p q)) of
                          [] -> Nothing
                          ds -> Just (minimum ds)
+
+readDirections :: String -> [Direction]
+readDirections "R75,D30,R83,L12" = [R 75, D 30, R 83, L 12]
