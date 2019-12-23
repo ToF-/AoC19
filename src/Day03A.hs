@@ -7,6 +7,8 @@ data Segment = H Int Int Int
              | V Int Int Int
     deriving (Eq,Show)
     
+type Path = [Segment]
+
 data Direction = L Int | R Int | U Int | D Int 
     deriving (Eq,Show)
 
@@ -31,10 +33,13 @@ intersect (V x y0 y1) (H y x0 x1) | x0 <= x && x <= x1 && y0 <= y && y <= y1 = [
                                   | otherwise = []
 intersect (H y x0 x1) (V x y0 y1) = intersect (V x y0 y1) (H y x0 x1) 
 
-path :: Position -> [Direction] -> [Segment]
+path :: Position -> [Direction] -> Path
 path _ [] = []
 path pos (d:ds) = segment : path (newPosition segment) ds
     where
     segment = extend pos d 
     newPosition (H y x0 x1) = (x1,y)
     newPosition (V x y0 y1) = (x,y1) 
+
+cross :: Path -> Path -> [Position]
+cross _ _ = []
