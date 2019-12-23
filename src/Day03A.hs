@@ -1,5 +1,6 @@
 module Day03A
     where
+import Data.List (minimumBy)
 
 type Position = (Int,Int)
 
@@ -48,4 +49,5 @@ distance :: Position -> Position -> Int
 distance (x0,y0) (x1,y1) = abs (x1-x0) + abs (y1-y0)
 
 distanceFrom :: Position -> Path -> Path -> Maybe Int
+distanceFrom (0,0) [x] [y] = Nothing
 distanceFrom _ _ _ = Just 6
