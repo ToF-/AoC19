@@ -49,3 +49,8 @@ spec = describe "manhattan distance of closest intersection" $ do
             let crosses = p1 `cross` p2
             (3,3) `elem` crosses  `shouldBe` True
             (6,5) `elem` crosses  `shouldBe` True 
+
+    describe "manhattan distance" $ do
+        it "is the sum of the absolute x distance and y distance" $ do
+            distance (0,0) (5,5) `shouldBe` 10
+

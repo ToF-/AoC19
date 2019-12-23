@@ -43,3 +43,6 @@ path pos (d:ds) = segment : path (newPosition segment) ds
 
 cross :: Path -> Path -> [Position]
 cross p q = concat [s `intersect` t | s <- p, t <- q]
+
+distance :: Position -> Position -> Int
+distance (x0,y0) (x1,y1) = (x1-x0) + (y1-y0)
