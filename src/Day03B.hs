@@ -3,4 +3,4 @@ module Day03B
 import Day03A
 
 steps :: Position -> Position -> [Direction] -> Maybe Int
-steps (0,0) (3,0) [R 10] = Just 3
+steps (x0,0) (x1,0) [R 10] = Just (x1-x0)
