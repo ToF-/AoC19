@@ -91,6 +91,7 @@ spec = describe "manhattan distance of closest intersection" $ do
                 pathA = path (0,0) $ readDirections lineA
                 pathB = path (0,0) $ readDirections lineB
             distanceFrom (0,0) pathA pathB `shouldBe` Just 258
+        -- done
 
 
         
