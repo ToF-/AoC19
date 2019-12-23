@@ -66,6 +66,19 @@ spec = describe "manhattan distance of closest intersection" $ do
             let p2 = path (0,0) [U 7, R 6, D 4, L 4]
             distanceFrom (0,0) p1 p2 `shouldBe` Just 6
 
+        it "passes puzzle examples" $ do
+            let lineA = "R75,D30,R83,U83,L12,D49,R71,U7,L72"
+                lineB = "U62,R66,U55,R34,D71,R55,D58,R83"
+                pathA = path (0,0) $ readDirections lineA
+                pathB = path (0,0) $ readDirections lineB
+            distanceFrom (0,0) pathA pathB `shouldBe` Just 159
+
+-- 
+-- R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51
+-- U98,R91,D20,R16,D67,R40,U7,R15,U6,R7 = distance 135
+
     describe "readDirections" $ do
         it "can read a path in the format of the puzzle" $ do
             readDirections "R75,D30,R83,L12" `shouldBe` [R 75, D 30, R 83, L 12]
+
+        
