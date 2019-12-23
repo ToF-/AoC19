@@ -29,4 +29,4 @@ intersect (H y x0 x1) (V x y0 y1) = intersect (V x y0 y1) (H y x0 x1)
 
 path :: Position -> [Direction] -> [Segment]
 path (0,0) [R 8, U 5, L 5, D 3] = H 0 0 8 :  [V 8 0 5, H 5 3 8, V 3 2 5]
-path (10,20) [R 8, U 5, L 5, D 3] = [H 20 10 18, V 18 20 25, H 25 13 18, V 13 22 25]
+path (10,20) [R 8, U 5, L 5, D 3] = H 20 10 18 : [V 18 20 25, H 25 13 18, V 13 22 25]
