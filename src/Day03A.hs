@@ -1,6 +1,7 @@
 module Day03A
     where
-import Data.List (minimumBy)
+import Data.List (minimum, intersperse, groupBy)
+import Data.Char
 
 type Position = (Int,Int)
 
@@ -54,4 +55,6 @@ distanceFrom pos p q = case filter (>0) (map (distance pos) (cross p q)) of
                          ds -> Just (minimum ds)
 
 readDirections :: String -> [Direction]
-readDirections "R75,D30,R83,L12" = [R 75, D 30, R 83, L 12]
+readDirections s = read ("[" ++ convert s ++ "]")
+    where
+    convert = concat . intersperse " " . groupBy (\a b -> isDigit a == isDigit b)
