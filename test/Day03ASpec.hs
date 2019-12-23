@@ -55,3 +55,8 @@ spec = describe "manhattan distance of closest intersection" $ do
             distance (0,0) (5,5) `shouldBe` 10
             distance (4,3) (1,1) `shouldBe` 5
 
+    describe "distance from central port" $ do
+        it "is the manhattan distance of the closest intersection to (0,0) of two paths" $ do 
+            let p1 = path (0,0) [R 8, U 5, L 5, D 3]
+            let p2 = path (0,0) [U 7, R 6, D 4, L 4]
+            distanceFrom (0,0) p1 p2 `shouldBe` Just 6
