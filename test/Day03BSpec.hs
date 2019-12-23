@@ -22,3 +22,4 @@ spec = describe "steps"  $ do
         steps (0,0) (-4,0) [L 5] `shouldBe` Just 4
         steps (-2,0) (-4,0) [L 5] `shouldBe` Just 2
         steps (0,0) (-14,0) [L 5] `shouldBe` Nothing
+        steps (0,0) (-4,1) [L 5] `shouldBe` Nothing
