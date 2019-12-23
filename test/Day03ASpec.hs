@@ -2,6 +2,7 @@ module Day03ASpec
     where
 import Test.Hspec
 import Day03A
+import System.IO
 
 spec = describe "manhattan distance of closest intersection" $ do
     describe "segment" $ do
@@ -55,6 +56,10 @@ spec = describe "manhattan distance of closest intersection" $ do
             distance (0,0) (5,5) `shouldBe` 10
             distance (4,3) (1,1) `shouldBe` 5
 
+    describe "readDirections" $ do
+        it "can read a path in the format of the puzzle" $ do
+            readDirections "R75,D30,R83,L12" `shouldBe` [R 75, D 30, R 83, L 12]
+
     describe "distance from central port" $ do
         it "is Nothing if paths don't cross each other" $ do
             let p1 = path (0,0) [R 8]
@@ -79,8 +84,13 @@ spec = describe "manhattan distance of closest intersection" $ do
                 pathB = path (0,0) $ readDirections lineB
             distanceFrom (0,0) pathA pathB `shouldBe` Just 135
 
-    describe "readDirections" $ do
-        it "can read a path in the format of the puzzle" $ do
-            readDirections "R75,D30,R83,L12" `shouldBe` [R 75, D 30, R 83, L 12]
+        it "finds the distance in the given puzzle" $ do
+            handle <- openFile "input/Day3A.txt" ReadMode
+            contents <- hGetContents handle
+            let [lineA,lineB] = lines contents
+                pathA = path (0,0) $ readDirections lineA
+                pathB = path (0,0) $ readDirections lineB
+            distanceFrom (0,0) pathA pathB `shouldBe` Just 258
+
 
         
