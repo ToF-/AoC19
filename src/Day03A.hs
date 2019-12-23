@@ -14,7 +14,7 @@ extend :: Position -> Direction -> Segment
 extend (x,y) (R l) = H y x (x+l)
 extend (x,y) (L l) = H y x (x-l) 
 extend (x,y) (U l) = V x y (y+l)
-extend (x,y) (D l) = V x (y-l) y
+extend (x,y) (D l) = V x y (y-l) 
 
 intersect :: Segment -> Segment -> [Position]
 intersect (H yA x0A x1A) s | x0A>x1A = intersect (H yA x1A x0A) s
