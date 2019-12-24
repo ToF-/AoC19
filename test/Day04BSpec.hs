@@ -19,6 +19,7 @@ spec = describe "legitPassword" $ do
 
     it "has two adjacent digits that are not part of a group of three" $ do
         legitPassword 123444 `shouldBe` False
+        legitPassword 111122 `shouldBe` True
 
     describe "digits" $ do
         it "gives a number's digit" $ do
