@@ -11,4 +11,4 @@ spec = describe "legitPassword" $ do
 
     it "contains at least 2 adjacent identical digits" $ do
         legitPassword 123456 `shouldBe` False
-        legitPassword 123346 `shouldBe` True
+        legitPassword 123466 `shouldBe` True
