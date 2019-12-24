@@ -10,3 +10,5 @@ legitPassword n = A.legitPassword n && (not (threeEquals n))
                              ,n `mod` 10)
 
 
+numberLegitPasswords :: Int -> Int -> Int
+numberLegitPasswords start end = 0 -- 1 + length $ filter legitPassword [start..end]
