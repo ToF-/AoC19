@@ -84,3 +84,10 @@ spec = describe "steps"  $ do
                 dirsB = readDirections lineB
             minimalSteps (0,0) dirsA dirsB `shouldBe` Just 410
 
+        it "finds the fewest combined steps in the given puzzle" $ do
+            handle <- openFile "input/Day3A.txt" ReadMode
+            contents <- hGetContents handle
+            let [lineA,lineB] = lines contents
+                dirsA = readDirections lineA
+                dirsB = readDirections lineB
+            minimalSteps (0,0) dirsA dirsB `shouldBe` Just 12304
