@@ -17,3 +17,4 @@ spec = describe "legitPassword" $ do
     describe "digits" $ do
         it "gives a number's digit" $ do
             digits 1 4807  `shouldBe` [7]
+            digits 2 4807  `shouldBe` [0,7]

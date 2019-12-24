@@ -9,3 +9,4 @@ legitPassword n | (n `mod` 10) /= ((n `div` 10)`mod` 10) = False
 legitPassword n = True
 
 digits 1 n = [n `mod` 10]
+digits 2 n = [(n `div` 10) `mod` 10, n `mod` 10]
