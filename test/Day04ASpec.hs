@@ -16,3 +16,4 @@ spec = describe "legitPassword" $ do
 
     it "digits never decrease" $ do
         legitPassword 124451 `shouldBe` False
+        legitPassword 124456 `shouldBe` True
