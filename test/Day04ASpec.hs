@@ -13,3 +13,6 @@ spec = describe "legitPassword" $ do
         legitPassword 123456 `shouldBe` False
         legitPassword 123466 `shouldBe` True
         legitPassword 123446 `shouldBe` True
+
+    it "digits never decrease" $ do
+        legitPassword 124451 `shouldBe` False
