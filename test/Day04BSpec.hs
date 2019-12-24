@@ -14,6 +14,9 @@ spec = describe "legitPassword" $ do
         legitPassword 123457 `shouldBe` False
         legitPassword 123445 `shouldBe` True
 
+    it "has digits that never decrease from left to right" $ do
+        legitPassword 223450 `shouldBe` False
+
     describe "digits" $ do
         it "gives a number's digit" $ do
             digits 1 4807  `shouldBe` [7]
