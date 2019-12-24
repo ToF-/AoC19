@@ -44,3 +44,8 @@ spec = describe "steps"  $ do
 
         it "down and then right" $ do
             steps (0,0) (7,-2) [D 2, R 10] `shouldBe` Just 9
+
+        it "on directions given as example" $ do
+            let line = "R8,U5,L5,D3"
+                dirs = readDirections line
+            steps (0,0) (3,3) dirs `shouldBe` Just 20
