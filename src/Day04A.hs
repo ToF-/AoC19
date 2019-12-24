@@ -1,7 +1,7 @@
 module Day04A where
 
 legitPassword :: Int -> Bool
-legitPassword n = isSixDigit n && twoAdjacentIdentical n && (not (decreaseOnce n))
+legitPassword n = isSixDigit n && (once (==) n) && (not (decreaseOnce n))
     where
         isSixDigit n = n > 99999 && n < 1000000
 
