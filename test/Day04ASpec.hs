@@ -25,3 +25,5 @@ spec = describe "legitPassword" $ do
 
         it "passes the test puzzle" $ do
             numberLegitPasswords 158126 624574 `shouldBe` 1665
+
+    -- done
