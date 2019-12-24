@@ -46,9 +46,21 @@ spec = describe "steps"  $ do
             steps (0,0) (7,-2) [D 2, R 10] `shouldBe` Just 9
 
         it "on directions given as example" $ do
+--           ...........
+--           .+-----+...
+--           .|.....|...
+--           .|..+--X-+.
+--           .|..|..|.|.
+--           .|.-X--+.|.
+--           .|..|....|.
+--           .|.......|.
+--           .o-------+.
+--           ...........
             let lineA = "R8,U5,L5,D3"
                 lineB = "U7,R6,D4,L4"
                 dirsA = readDirections lineA
                 dirsB = readDirections lineB
             steps (0,0) (3,3) dirsA `shouldBe` Just 20
             steps (0,0) (3,3) dirsB `shouldBe` Just 20
+            steps (0,0) (6,5) dirsA `shouldBe` Just 15
+            steps (0,0) (6,5) dirsB `shouldBe` Just 15
