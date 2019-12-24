@@ -21,6 +21,13 @@ spec = describe "legitPassword" $ do
         legitPassword 123444 `shouldBe` False
         legitPassword 111122 `shouldBe` True
 
+    describe "numberLegitPasswords" $ do
+        it "tells how many legit passwords are in an interval" $ do
+            numberLegitPasswords 111111 111133 `shouldBe` length [111122,111133]
+
+        it "passes the test puzzle" $ do
+            numberLegitPasswords 158126 624574 `shouldBe` 1131
+
     describe "digits" $ do
         it "gives a number's digit" $ do
             digits 1 4807  `shouldBe` [7]

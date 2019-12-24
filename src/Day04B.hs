@@ -13,3 +13,6 @@ allDigits = reverse . digits 6
 
 digits 0 _ = []
 digits m n = n `mod`10 : digits (pred m) (n `div` 10) 
+
+numberLegitPasswords :: Int -> Int -> Int
+numberLegitPasswords start end = length $ filter legitPassword [start..end]
