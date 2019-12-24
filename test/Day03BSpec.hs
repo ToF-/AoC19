@@ -78,4 +78,9 @@ spec = describe "steps"  $ do
                 dirsA = readDirections lineA
                 dirsB = readDirections lineB
             minimalSteps (0,0) dirsA dirsB `shouldBe` Just 610
+            let lineA = "R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51"
+                lineB = "U98,R91,D20,R16,D67,R40,U7,R15,U6,R7"
+                dirsA = readDirections lineA
+                dirsB = readDirections lineB
+            minimalSteps (0,0) dirsA dirsB `shouldBe` Just 410
 
