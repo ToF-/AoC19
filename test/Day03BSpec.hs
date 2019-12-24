@@ -91,3 +91,4 @@ spec = describe "steps"  $ do
                 dirsA = readDirections lineA
                 dirsB = readDirections lineB
             minimalSteps (0,0) dirsA dirsB `shouldBe` Just 12304
+        -- done
