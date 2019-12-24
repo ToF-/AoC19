@@ -64,3 +64,12 @@ spec = describe "steps"  $ do
             steps (0,0) (3,3) dirsB `shouldBe` Just 20
             steps (0,0) (6,5) dirsA `shouldBe` Just 15
             steps (0,0) (6,5) dirsB `shouldBe` Just 15
+
+    describe "minimalSteps" $ do
+        it "gives the fewest combined steps for 2 paths to come to an intersection" $ do
+            let lineA = "R8,U5,L5,D3"
+                lineB = "U7,R6,D4,L4"
+                dirsA = readDirections lineA
+                dirsB = readDirections lineB
+            minimalSteps (0,0) dirsA dirsB `shouldBe` Just 30 
+
