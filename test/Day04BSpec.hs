@@ -12,3 +12,4 @@ spec = describe "legitPassword" $ do
         legitPassword 123456 `shouldBe` False
         legitPassword 123455 `shouldBe` True
         legitPassword 123457 `shouldBe` False
+        legitPassword 123445 `shouldBe` True
