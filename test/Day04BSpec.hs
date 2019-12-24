@@ -13,3 +13,7 @@ spec = describe "legitPassword" $ do
         legitPassword 123455 `shouldBe` True
         legitPassword 123457 `shouldBe` False
         legitPassword 123445 `shouldBe` True
+
+    describe "digits" $ do
+        it "gives a number's digit" $ do
+            digits 1 4807  `shouldBe` [7]
