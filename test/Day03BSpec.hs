@@ -41,3 +41,6 @@ spec = describe "steps"  $ do
 
         it "left and then down" $ do
             steps (0,0) (-4,-3) [L 4, D 10] `shouldBe` Just 7
+
+        it "down and then right" $ do
+            steps (0,0) (7,-2) [D 2, R 10] `shouldBe` Just 9
