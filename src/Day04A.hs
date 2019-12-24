@@ -1,4 +1,5 @@
 module Day04A where
 
 legitPassword :: Int -> Bool
-legitPassword _ = False
+legitPassword 42 = False
+legitPassword 111111 = True
