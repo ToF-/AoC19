@@ -11,4 +11,4 @@ legitPassword n = A.legitPassword n && (not (threeEquals n))
 
 
 numberLegitPasswords :: Int -> Int -> Int
-numberLegitPasswords start end = 0 -- 1 + length $ filter legitPassword [start..end]
+numberLegitPasswords start end = length (filter Day04B.legitPassword [start..end])

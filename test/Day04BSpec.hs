@@ -9,7 +9,7 @@ spec = describe "legitPassword" $ do
         legitPassword 113444 `shouldBe` False
         legitPassword 111111 `shouldBe` False
 
-    -- describe "numberLegitPasswords" $ do
-        -- it "tells how many legit passwords are in an interval" $ do
-            -- numberLegitPasswords 111111 111133 `shouldBe` 17
+    describe "numberLegitPasswords" $ do
+        it "tells how many legit passwords are in an interval" $ do
+            numberLegitPasswords 111111 111133 `shouldBe` 0
 
