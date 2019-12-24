@@ -72,4 +72,10 @@ spec = describe "steps"  $ do
                 dirsA = readDirections lineA
                 dirsB = readDirections lineB
             minimalSteps (0,0) dirsA dirsB `shouldBe` Just 30 
+        it "gives the fewest combined steps for the examples given" $ do
+            let lineA = "R75,D30,R83,U83,L12,D49,R71,U7,L72"
+                lineB = "U62,R66,U55,R34,D71,R55,D58,R83"
+                dirsA = readDirections lineA
+                dirsB = readDirections lineB
+            minimalSteps (0,0) dirsA dirsB `shouldBe` Just 610
 
