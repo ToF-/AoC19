@@ -22,3 +22,6 @@ spec = describe "legitPassword" $ do
     describe "numberLegitPasswords" $ do
         it "tells how many legit passwords are in an interval" $ do
             numberLegitPasswords 111111 111133 `shouldBe` 18 
+
+        it "passes the test puzzle" $ do
+            numberLegitPasswords 158126 624574 `shouldBe` 1665
