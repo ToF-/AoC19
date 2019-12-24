@@ -3,7 +3,7 @@ module Day03B
 import Day03A
 
 steps :: Position -> Position -> [Direction] -> Maybe Int
-steps (x0,y0) (x1,y1) [U l,R 10] = (+) <$> Just l <*> steps (x0,y0+l) (5,4) [R 10]
+steps (x0,y0) (x1,y1) [U l,R 10] = (+) <$> Just l <*> steps (x0,y0+l) (x1,y1) [R 10]
 steps _ _ [] = Nothing
 steps (x0,y0) (x1,y1) [D l] | x0 == x1 && y1 >= (y0-l) = Just (y0-y1) 
                             | otherwise = Nothing
