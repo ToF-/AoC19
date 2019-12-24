@@ -4,6 +4,9 @@ legitPassword :: Int -> Bool
 legitPassword n = isSixDigit n && twoAdjacentIdentical n && (not (decreaseOnce n))
     where
         isSixDigit n = n > 99999 && n < 1000000
+
+        once f n | n < 10 = False
+
         twoAdjacentIdentical n | n < 10 = False
         twoAdjacentIdentical n = let (t,u) = tensAndUnits n in t == u || twoAdjacentIdentical (n `div` 10)
         decreaseOnce n | n < 10 = False
