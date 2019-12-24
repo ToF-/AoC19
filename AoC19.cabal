@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 90e85909c42e554ef1469356d0efd0011fb5b363523962f239604c30d140dff3
+-- hash: 3085034cfaf0bb7454ecec00c6286578eb0f0e44647917740c0e344ce593bbba
 
 name:           AoC19
 version:        0.1.0.0
@@ -34,6 +34,7 @@ library
       Day03A
       Day03B
       Day04A
+      Day04B
   other-modules:
       Paths_AoC19
   hs-source-dirs:
@@ -66,6 +67,7 @@ test-suite AoC19-test
       Day03ASpec
       Day03BSpec
       Day04ASpec
+      Day04BSpec
       Paths_AoC19
   hs-source-dirs:
       test
