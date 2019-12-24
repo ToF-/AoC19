@@ -27,6 +27,7 @@ spec = describe "legitPassword" $ do
 
         it "passes the test puzzle" $ do
             numberLegitPasswords 158126 624574 `shouldBe` 1131
+    -- done
 
     describe "digits" $ do
         it "gives a number's digit" $ do
