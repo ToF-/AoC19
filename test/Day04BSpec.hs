@@ -17,6 +17,9 @@ spec = describe "legitPassword" $ do
     it "has digits that never decrease from left to right" $ do
         legitPassword 223450 `shouldBe` False
 
+    it "has two adjacent digits that are not part of a group of three" $ do
+        legitPassword 123444 `shouldBe` False
+
     describe "digits" $ do
         it "gives a number's digit" $ do
             digits 1 4807  `shouldBe` [7]
