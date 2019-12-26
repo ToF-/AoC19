@@ -23,6 +23,14 @@ executeAt (RW input output) pc code = do
               y = code `at` b
               r = x + y 
           return (replace c r code)
+      2 -> do
+          let a = code `at` (pc+1)
+              b = code `at` (pc+2)
+              c = code `at` (pc+3)
+              x = code `at` a
+              y = code `at` b
+              r = x * y 
+          return (replace c r code)
 
 at :: [Code] -> Position -> Code
 at = (!!)

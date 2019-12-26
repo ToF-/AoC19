@@ -25,9 +25,9 @@ spec = describe "Intcode program" $ do
 
     it "do an addition on address before current position in the program" $ do
         [1,5,6,0,99,42,17] `shouldResultIn` [59,5,6,0,99,42,17]
--- 
---     it "do a multiplication" $ do
---         run [2,5,6,7,99,42,17,0] `shouldBe` [2,5,6,7,99,42,17,42*17]
+ 
+    it "do a multiplication" $ do
+        [2,5,6,7,99,42,17,0] `shouldResultIn` [2,5,6,7,99,42,17,42*17]
 -- 
 --     it "chain operations" $ do
 --         run [1,9,10,3
