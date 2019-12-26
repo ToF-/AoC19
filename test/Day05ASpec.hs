@@ -19,9 +19,9 @@ spec = describe "Intcode program" $ do
         [1,5,6,7,99,42,17,0] `shouldResultIn` [1,5,6,7,99,42,17,42+17]
         [1,5,6,7,99,4807,23,0] `shouldResultIn` [1,5,6,7,99,4807,23,4807+23]
         [1,6,7,8,99,0,42,17,0] `shouldResultIn` [1,6,7,8,99,0,42,17,42+17]
--- 
---     it "do an addition on address beyond size of  initial program" $ do
---         run [1,5,6,10,99,42,17] `shouldBe` [1,5,6,10,99,42,17,0,0,0,59]
+
+    it "do an addition on address beyond size of  initial program" $ do
+        [1,5,6,10,99,42,17] `shouldResultIn` [1,5,6,10,99,42,17,0,0,0,59]
 -- 
 --     it "do an addition on address before current position in the program" $ do
 --         run [1,5,6,0,99,42,17] `shouldBe` [59,5,6,0,99,42,17]

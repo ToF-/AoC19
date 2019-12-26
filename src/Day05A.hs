@@ -28,6 +28,8 @@ at :: [Code] -> Position -> Code
 at = (!!)
 
 replace :: Position -> Code -> [Code] -> [Code]
+replace 0 r [] = [r]
+replace p r [] = 0 : replace (pred p) r []
 replace 0 r (_:cs) = r:cs
 replace p r (c:cs) = c : replace (pred p) r cs 
 
