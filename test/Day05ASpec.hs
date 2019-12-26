@@ -16,9 +16,7 @@ spec = describe "Intcode program" $ do
         [99] `shouldResultIn` [99]
 
     it "do an addition on indirect addresses" $ do
-        let prog = [1,5,6,7,99,42,17,0]
-        result <- run (RW getLine putStrLn) prog
-        result `shouldBe` [1,5,6,7,99,42,17,42+17]
+        [1,5,6,7,99,42,17,0] `shouldResultIn` [1,5,6,7,99,42,17,42+17]
         [1,5,6,7,99,4807,23,0] `shouldResultIn` [1,5,6,7,99,4807,23,4807+23]
         [1,6,7,8,99,0,42,17,0] `shouldResultIn` [1,6,7,8,99,0,42,17,42+17]
 -- 
