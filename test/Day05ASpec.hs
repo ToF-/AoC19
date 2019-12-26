@@ -5,8 +5,13 @@ import Control.Monad.Writer (writer, runWriter)
 import System.IO
 import Day05A
 
-spec = describe "Intcode program" $ do
+shouldResultIn :: [Code] -> [Code] -> Expectation
+shouldResultIn code expected = 
+        do
+            result <- run (RW getLine putStrLn) code
+            result `shouldBe` expected
 
+spec = describe "Intcode program" $ do
     it "halt on opcode 99" $ do
         let prog = [99]
         result <- run (RW getLine putStrLn) prog
@@ -16,7 +21,7 @@ spec = describe "Intcode program" $ do
         let prog = [1,5,6,7,99,42,17,0]
         result <- run (RW getLine putStrLn) prog
         result `shouldBe` [1,5,6,7,99,42,17,42+17]
---         run [1,5,6,7,99,4807,23,0] `shouldBe` [1,5,6,7,99,4807,23,4807+23]
+        [1,5,6,7,99,4807,23,0] `shouldResultIn` [1,5,6,7,99,4807,23,4807+23]
 --         run [1,6,7,8,99,0,42,17,0] `shouldBe` [1,6,7,8,99,0,42,17,42+17]
 -- 
 --     it "do an addition on address beyond size of  initial program" $ do
