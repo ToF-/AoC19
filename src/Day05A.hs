@@ -12,24 +12,20 @@ run rw code = do
     return code'
 
 executeAt :: Monad m => RW m -> Int -> [Code] -> m [Code]
-executeAt (RW input output) pc code = do
+executeAt rw pc code = do
     case code `at` pc of
       99 -> return code
-      1 -> do
+      1 -> operation (+) rw pc code 
+      2 -> operation (*) rw pc code
+
+operation :: Monad m => (Int -> Int -> Int) -> RW m -> Int -> [Code] -> m [Code]
+operation op (RW input output) pc code = do
           let a = code `at` (pc+1)
               b = code `at` (pc+2)
               c = code `at` (pc+3)
               x = code `at` a
               y = code `at` b
-              r = x + y 
-          return (replace c r code)
-      2 -> do
-          let a = code `at` (pc+1)
-              b = code `at` (pc+2)
-              c = code `at` (pc+3)
-              x = code `at` a
-              y = code `at` b
-              r = x * y 
+              r = x `op` y
           return (replace c r code)
 
 at :: [Code] -> Position -> Code
