@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 27265a876c90a9f9967739c42230f141cf06938106982c0cb2adfda5da864675
+-- hash: 7fa3e5bd928d8df20477ee68c22468e0984e72fcf2f15444f2a6d36b3b63c29c
 
 name:           AoC19
 version:        0.1.0.0
@@ -35,6 +35,7 @@ library
       Day03B
       Day04A
       Day04B
+      Day05A
   other-modules:
       Paths_AoC19
   hs-source-dirs:
@@ -42,6 +43,7 @@ library
   build-depends:
       base >=4.7 && <5
     , containers
+    , mtl
   default-language: Haskell2010
 
 executable AoC19-exe
@@ -54,6 +56,7 @@ executable AoC19-exe
   build-depends:
       AoC19
     , base >=4.7 && <5
+    , mtl
   default-language: Haskell2010
 
 test-suite AoC19-test
@@ -77,4 +80,5 @@ test-suite AoC19-test
       AoC19
     , base >=4.7 && <5
     , hspec
+    , mtl
   default-language: Haskell2010
