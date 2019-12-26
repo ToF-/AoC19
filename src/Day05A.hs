@@ -12,15 +12,22 @@ run rw code = do
     return code'
 
 executeAt :: Monad m => RW m -> Int -> [Code] -> m [Code]
-executeAt rw pc code = do
+executeAt rw@(RW input output) pc code = do
+    output ""
     case code `at` pc of
-      99 -> return code
-      1 -> do
+        99 -> return code
+        1 -> do
             code' <- operation (+) rw pc code 
             executeAt rw (pc+4) code'
-      2 -> do
+        2 -> do
             code' <- operation (*) rw pc code
             executeAt rw (pc+4) code'
+        3 -> do
+            let a = code `at` (pc+1)
+            v <- fmap read $ input
+            return (replace a v code)
+
+    
 
 operation :: Monad m => (Int -> Int -> Int) -> RW m -> Int -> [Code] -> m [Code]
 operation op (RW input output) pc code = do

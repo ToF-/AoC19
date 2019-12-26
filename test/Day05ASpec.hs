@@ -1,7 +1,7 @@
 module Day05ASpec
     where
 import Test.Hspec
-import Control.Monad.Writer (writer, runWriter)
+import Control.Monad.Writer (Writer, writer, runWriter)
 import System.IO
 import Day05A
 
@@ -35,22 +35,10 @@ spec = describe "an IntCode program" $ do
                               ,2,3,11,0
                               ,99
                               ,30,40,50]
--- 
 
-
--- 
---         run [1,0,0,0,99] `shouldBe` [2,0,0,0,99]
---         run [2,3,0,3,99] `shouldBe` [2,3,0,6,99]
---         run [2,4,4,5,99,0] `shouldBe` [2,4,4,5,99,9801] 
---         run [1,1,1,4,99,5,6,0,99] `shouldBe` [30,1,1,4,2,5,6,0,99]
--- 
---     it "do an input operation" $ do
---         let program = [3,0,99]
---             input = return "42\n"
---         result <- runWithIO input output program
---         result `shouldBe` [42,0,99]
--- 
---             -- let out = \s -> writer ((), s)
---             --     run = prompt out
---             -- (snd (runWriter run)) `shouldBe` ""
--- 
+    it "can do an input operation" $ do
+        let input = return "42\n" --return "42\n" :: IO String
+            output = putStrLn
+            code = [3,3,99]
+        result <- run (RW input output) code
+        result  `shouldBe` [3,3,99,42]
