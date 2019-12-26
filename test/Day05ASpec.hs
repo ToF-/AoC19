@@ -28,6 +28,16 @@ spec = describe "Intcode program" $ do
  
     it "do a multiplication" $ do
         [2,5,6,7,99,42,17,0] `shouldResultIn` [2,5,6,7,99,42,17,42*17]
+
+    it "chain instructions" $ do
+        [1,9,10,3  ,2,3,11,0  ,99 ,30,40,50]
+             `shouldResultIn` [3500,9,10,70
+                              ,2,3,11,0
+                              ,99
+                              ,30,40,50]
+-- 
+
+
 -- 
 --     it "chain operations" $ do
 --         run [1,9,10,3

@@ -15,8 +15,12 @@ executeAt :: Monad m => RW m -> Int -> [Code] -> m [Code]
 executeAt rw pc code = do
     case code `at` pc of
       99 -> return code
-      1 -> operation (+) rw pc code 
-      2 -> operation (*) rw pc code
+      1 -> do
+            code' <- operation (+) rw pc code 
+            executeAt rw (pc+4) code'
+      2 -> do
+            code' <- operation (*) rw pc code
+            executeAt rw (pc+4) code'
 
 operation :: Monad m => (Int -> Int -> Int) -> RW m -> Int -> [Code] -> m [Code]
 operation op (RW input output) pc code = do
