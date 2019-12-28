@@ -14,6 +14,18 @@ type Code = Int
 type Position = Code
 type PC = Position
 
+data Mode = I | P
+    deriving (Eq, Show)
+
+data Instruction = Add Code Mode Code Mode Code
+                 | Mul Code Mode Code Mode Code
+                 | Lth Code Mode Code Mode Code
+                 | Equ Code Mode Code Mode Code
+                 | JTr Code Mode Code Mode
+                 | JFa Code Mode Code Mode
+                 | Inp Code 
+                 | Out Code Mode 
+
 
 run :: LineIO m => [Code] -> m [Code]
 run  code = do
@@ -47,9 +59,6 @@ immediate code p = code `at` p
 
 position :: [Code] -> Code -> Code
 position code p = code `at` (code `immediate` p)
-
-data Parameters = P Code Code Code
-    deriving (Eq,Show)
 
 operation :: LineIO m => Int -> (Code -> Code -> Code) -> Code -> [Code] -> m [Code]
 operation  pc op mode code = do
