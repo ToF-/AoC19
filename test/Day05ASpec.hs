@@ -85,5 +85,5 @@ spec = describe "an IntCode program" $ do
             mock = MockLineIO { setInput = "1\n", getOutput = "" }
             st   = execState (run code) mock
         getOutput st  `shouldBe` "13978427"
-       
+    -- done       
 
