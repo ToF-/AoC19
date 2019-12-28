@@ -13,7 +13,6 @@ run rw code = do
 
 executeAt :: Monad m => RW m -> Int -> [Code] -> m [Code]
 executeAt rw@(RW input output) pc code = do
-    output ""
     case code `at` pc of
         99 -> return code
         1 -> do
