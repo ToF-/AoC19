@@ -60,3 +60,8 @@ spec = describe "an IntCode program" $ do
             mock = MockLineIO { setInput = "42\n", getOutput = "" }
             st   = execState (run code) mock
         getOutput st  `shouldBe` "4807"
+    it "can copy its input into its output" $ do
+        let code = [3,0,4,0,99]
+            mock = MockLineIO { setInput = "17\n", getOutput = "" }
+            st   = execState (run code) mock
+        getOutput st  `shouldBe` "17"

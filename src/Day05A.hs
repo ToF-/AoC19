@@ -31,14 +31,12 @@ executeAt  pc code = do
         3 -> do
             let a = code `at` (pc+1)
             v <- fmap read $ input
-            return (replace a v code)
+            executeAt (pc+2) (replace a v code)
         4 -> do
             let p = code `at` (pc+1)
                 v = code `at` p
             output (show v)
-            return code
-
-    
+            executeAt (pc+2) code
 
 operation :: LineIO m => Int -> (Code -> Code -> Code) -> [Code] -> m [Code]
 operation  pc op code = do
