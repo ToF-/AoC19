@@ -27,6 +27,18 @@ data Instruction = Add Code Mode Code Mode Code
                  | Out Code Mode 
 
 
+immediate :: [Code] -> Code -> Code
+immediate code p = code `at` p
+
+position :: [Code] -> Code -> Code
+position code p = code `at` (code `immediate` p)
+
+execute :: Instruction -> [Code] -> (PC,[Code])
+execute (Add a P b P c) code = let 
+        x = code `position` a
+        y = code `position` b
+    in (4, replace c (x+y) code)
+
 run :: LineIO m => [Code] -> m [Code]
 run  code = do
     code' <- executeAt  0 code
@@ -53,12 +65,6 @@ executeAt  pc code = do
             let v = if (mode `mod` 10) == 1 then code `at` (pc+1) else code `at` (code `at` (pc+1))
             output (show v)
             executeAt (pc+2) code
-
-immediate :: [Code] -> Code -> Code
-immediate code p = code `at` p
-
-position :: [Code] -> Code -> Code
-position code p = code `at` (code `immediate` p)
 
 operation :: LineIO m => Int -> (Code -> Code -> Code) -> Code -> [Code] -> m [Code]
 operation  pc op mode code = do
