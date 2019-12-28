@@ -65,3 +65,6 @@ spec = describe "an IntCode program" $ do
             mock = MockLineIO { setInput = "17\n", getOutput = "" }
             st   = execState (run code) mock
         getOutput st  `shouldBe` "17"
+
+    it "has immediate mode for first parameter" $ do
+        [101,42,5,6,99,17] `shouldResultIn` [101,42,5,6,99,17,59]

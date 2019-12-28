@@ -20,13 +20,16 @@ run  code = do
 
 executeAt :: LineIO m =>  Int -> [Code] -> m [Code]
 executeAt  pc code = do
-    case code `at` pc of
+    let instruction = code `at` pc
+        opCode = instruction `mod` 100
+        mode = instruction `div` 100
+    case opCode of
         99 -> return code
         1 -> do
-            code' <- operation  pc (+) code 
+            code' <- operation  pc (+) mode code 
             executeAt  (pc+4) code'
         2 -> do
-            code' <- operation  pc (*) code
+            code' <- operation  pc (*) mode code
             executeAt  (pc+4) code'
         3 -> do
             let a = code `at` (pc+1)
@@ -38,12 +41,12 @@ executeAt  pc code = do
             output (show v)
             executeAt (pc+2) code
 
-operation :: LineIO m => Int -> (Code -> Code -> Code) -> [Code] -> m [Code]
-operation  pc op code = do
+operation :: LineIO m => Int -> (Code -> Code -> Code) -> Code -> [Code] -> m [Code]
+operation  pc op mode code = do
           let a = code `at` (pc+1)
               b = code `at` (pc+2)
               c = code `at` (pc+3)
-              x = code `at` a
+              x = if mode == 1 then code `at` (pc+1) else code `at` (code `at` (pc+1))
               y = code `at` b
               r = x `op` y
           return (replace c r code)
