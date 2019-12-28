@@ -54,3 +54,9 @@ spec = describe "an IntCode program" $ do
             mock = MockLineIO { setInput = "42\n", getOutput = "" }
             st   = evalState (run code) mock
         st `shouldBe` [3,3,99,42]
+
+    it "can do an output operation" $ do
+        let code = [4,3,99,4807]
+            mock = MockLineIO { setInput = "42\n", getOutput = "" }
+            st   = execState (run code) mock
+        getOutput st  `shouldBe` "4807"
