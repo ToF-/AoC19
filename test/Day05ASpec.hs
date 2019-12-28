@@ -71,3 +71,9 @@ spec = describe "an IntCode program" $ do
 
     it "has immediate mode for second parameter" $ do
         [1001,5,23,6,99,17] `shouldResultIn` [1001,5,23,6,99,17,40]
+
+    it "has immediate mode for output operation" $ do
+        let code = [104,230165,99]
+            mock = MockLineIO { setInput = "42\n", getOutput = "" }
+            st   = execState (run code) mock
+        getOutput st  `shouldBe` "230165"

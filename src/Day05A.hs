@@ -36,8 +36,7 @@ executeAt  pc code = do
             v <- fmap read $ input
             executeAt (pc+2) (replace a v code)
         4 -> do
-            let p = code `at` (pc+1)
-                v = code `at` p
+            let v = if (mode `mod` 10) == 1 then code `at` (pc+1) else code `at` (code `at` (pc+1))
             output (show v)
             executeAt (pc+2) code
 
