@@ -46,8 +46,8 @@ operation  pc op mode code = do
           let a = code `at` (pc+1)
               b = code `at` (pc+2)
               c = code `at` (pc+3)
-              x = if mode == 1 then code `at` (pc+1) else code `at` (code `at` (pc+1))
-              y = code `at` b
+              x = if (mode `mod` 10)== 1 then code `at` (pc+1) else code `at` (code `at` (pc+1))
+              y = if ((mode `div` 10)`mod` 10) == 1 then code `at` (pc+2) else code `at` (code `at` (pc+2))
               r = x `op` y
           return (replace c r code)
 

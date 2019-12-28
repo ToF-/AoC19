@@ -68,3 +68,6 @@ spec = describe "an IntCode program" $ do
 
     it "has immediate mode for first parameter" $ do
         [101,42,5,6,99,17] `shouldResultIn` [101,42,5,6,99,17,59]
+
+    it "has immediate mode for second parameter" $ do
+        [1001,5,23,6,99,17] `shouldResultIn` [1001,5,23,6,99,17,40]
