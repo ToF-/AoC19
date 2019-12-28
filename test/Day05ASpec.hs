@@ -77,3 +77,13 @@ spec = describe "an IntCode program" $ do
             mock = MockLineIO { setInput = "42\n", getOutput = "" }
             st   = execState (run code) mock
         getOutput st  `shouldBe` "230165"
+
+    it "run the program given in the puzzle" $ do
+        handle <- openFile "input/Day5A.txt" ReadMode
+        contents <- hGetContents handle
+        let code = read $ ("[" ++ contents ++ "]")
+            mock = MockLineIO { setInput = "1\n", getOutput = "" }
+            st   = execState (run code) mock
+        getOutput st  `shouldBe` "13978427"
+       
+
