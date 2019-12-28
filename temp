@@ -21,7 +21,7 @@ instance LineIO (State MockLineIO) where
 shouldResultIn :: [Code] -> [Code] -> Expectation
 shouldResultIn code expected = 
         do
-            result <- run code
+            result <- run getLine putStrLn code
             result `shouldBe` expected
 
 spec = describe "an IntCode program" $ do
@@ -52,5 +52,4 @@ spec = describe "an IntCode program" $ do
     it "can do an input operation" $ do
         let code = [3,3,99]
             mock = MockLineIO { setInput = "42\n", getOutput = "" }
-            st   = evalState (run code) mock
-        st `shouldBe` [3,3,99,42]
+            2+2 `shouldBe` 5

@@ -2,34 +2,46 @@ module Day05A where
 import Control.Monad
 import Data.Map as M
 
+class Monad m => LineIO m where
+    input  :: m String
+    output :: String -> m ()
+
+instance LineIO IO where
+    input = getLine
+    output = putStrLn
+
 type Code = Int
 type Position = Code
-data RW m = RW (m String) (String -> m ())
 
-run :: Monad m => RW m -> [Code] -> m [Code]
-run rw code = do
-    code' <- executeAt rw 0 code
+run :: LineIO m => [Code] -> m [Code]
+run  code = do
+    code' <- executeAt  0 code
     return code'
 
-executeAt :: Monad m => RW m -> Int -> [Code] -> m [Code]
-executeAt rw@(RW input output) pc code = do
+executeAt :: LineIO m =>  Int -> [Code] -> m [Code]
+executeAt  pc code = do
     case code `at` pc of
         99 -> return code
         1 -> do
-            code' <- operation (+) rw pc code 
-            executeAt rw (pc+4) code'
+            code' <- operation  pc (+) code 
+            executeAt  (pc+4) code'
         2 -> do
-            code' <- operation (*) rw pc code
-            executeAt rw (pc+4) code'
+            code' <- operation  pc (*) code
+            executeAt  (pc+4) code'
         3 -> do
             let a = code `at` (pc+1)
             v <- fmap read $ input
             return (replace a v code)
+        4 -> do
+            let p = code `at` (pc+1)
+                v = code `at` p
+            output (show v)
+            return code
 
     
 
-operation :: Monad m => (Int -> Int -> Int) -> RW m -> Int -> [Code] -> m [Code]
-operation op (RW input output) pc code = do
+operation :: LineIO m => Int -> (Code -> Code -> Code) -> [Code] -> m [Code]
+operation  pc op code = do
           let a = code `at` (pc+1)
               b = code `at` (pc+2)
               c = code `at` (pc+3)
