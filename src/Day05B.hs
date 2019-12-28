@@ -12,6 +12,8 @@ instance LineIO IO where
 
 type Code = Int
 type Position = Code
+type PC = Position
+
 
 run :: LineIO m => [Code] -> m [Code]
 run  code = do
@@ -46,6 +48,8 @@ immediate code p = code `at` p
 position :: [Code] -> Code -> Code
 position code p = code `at` (code `immediate` p)
 
+data Parameters = P Code Code Code
+    deriving (Eq,Show)
 
 operation :: LineIO m => Int -> (Code -> Code -> Code) -> Code -> [Code] -> m [Code]
 operation  pc op mode code = do
