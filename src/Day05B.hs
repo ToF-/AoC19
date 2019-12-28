@@ -40,6 +40,13 @@ executeAt  pc code = do
             output (show v)
             executeAt (pc+2) code
 
+immediate :: [Code] -> Code -> Code
+immediate code p = code `at` p
+
+position :: [Code] -> Code -> Code
+position code p = code `at` (code `immediate` p)
+
+
 operation :: LineIO m => Int -> (Code -> Code -> Code) -> Code -> [Code] -> m [Code]
 operation  pc op mode code = do
           let a = code `at` (pc+1)
